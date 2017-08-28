@@ -19,6 +19,9 @@ class Movies(models.Model):
     )
     year = models.IntegerField(max_length=4, blank=True, null=True)
 
+    def get_movie_url(self):
+        return reverse("movie", kwargs={"pk": self.pk})
+
 
 class MoviesStarringPerson(models.Model):
     starring_movie = models.ForeignKey(Movies)
