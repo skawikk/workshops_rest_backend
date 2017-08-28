@@ -8,16 +8,17 @@ class Person(models.Model):
 
 
 class Movies(models.Model):
-   title = models.CharField(max_length=64)
-   description = models.TextField()
-   director = models.ForeignKey(Person, blank=True, null=True)
-   actors = models.ManyToManyField(
-       Person,
-       through="MoviesStarringPerson",
-       related_name="movie_person"
+    title = models.CharField(max_length=64)
+    description = models.TextField()
+    director = models.ForeignKey(Person, blank=True, null=True)
+    actors = models.ManyToManyField(
+        Person,
+        through="MoviesStarringPerson",
+        related_name="movie_person"
 
-   )
-   year = models.IntegerField(max_length=4, blank=True, null=True)
+    )
+    year = models.IntegerField(max_length=4, blank=True, null=True)
+
 
 class MoviesStarringPerson(models.Model):
     starring_movie = models.ForeignKey(Movies)
